@@ -11,9 +11,9 @@ end
 
 node[:nginx][:apt_packages].each do |nginx_package|
   package nginx_package do
-    version "#{node[:nginx][:version]}*"
+    version "#{node[:nginx][:version]}"
     options '--force-yes -o Dpkg::Options::="--force-confold"'
-    only_if "[ $(dpkg -l #{nginx_package} 2>&1 | grep #{node[:nginx][:version]}.* | grep -c '^h[ic] ') = 0 ]"
+    only_if "[ $(dpkg -l #{nginx_package} 2>&1 | grep #{node[:nginx][:version]} | grep -c '^h[ic] ') = 0 ]"
   end
 end
 
