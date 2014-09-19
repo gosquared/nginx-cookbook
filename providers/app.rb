@@ -1,7 +1,4 @@
 action :add do
-  service "nginx" do
-    supports :status => true, :restart => true, :reload => true
-  end
 
   template "#{node[:nginx][:dir]}/sites-available/#{new_resource.name}" do
     cookbook "nginx"
@@ -12,7 +9,7 @@ action :add do
     variables(
       :app => new_resource
     )
-    notifies :reload, resources(:service => "nginx"), :delayed
+    notifies :reload, "service[nginx]", :delayed
   end
 
   nginx_site new_resource.name
