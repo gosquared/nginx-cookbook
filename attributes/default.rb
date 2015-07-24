@@ -1,5 +1,5 @@
-set[:nginx][:version]               = "1.6.*"
-set[:nginx][:source]                = "http://nginx.org/download/nginx-1.6.0.tar.gz"
+set[:nginx][:version]               = "1.8.*"
+set[:nginx][:source]                = "http://nginx.org/download/nginx-1.8.0.tar.gz"
 set[:nginx][:apt_packages]          = %w[nginx-common nginx-full nginx]
 
 default[:nginx][:dir]               = "/etc/nginx"
